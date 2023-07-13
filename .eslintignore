@@ -1,0 +1,13 @@
+node_modules
+dist
+online_dist
+index.html
+public
+.history
+.eslintrc.cjs
+.prettierrc.cjs
+.stylelintrc.cjs
+commitlint.config.cjs
+lint-staged.config.cjs
+components.d.ts
+auto-imports.d.ts

@@ -1,0 +1,11 @@
+dist
+public
+online_dist
+.history
+.husky
+node_modules
+*.js
+*.ts
+*.json
+*.md
+*.lock
