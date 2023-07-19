@@ -2,8 +2,14 @@
 import Ajv from 'ajv'
 // https://github.com/ajv-validator/ajv-formats (预设的校验格式)
 import addFormats from 'ajv-formats'
+// https://github.com/ajv-validator/ajv-i18n (错误信息的语言包)
+// import localize from 'ajv-i18n'
+// https://github.com/ajv-validator/ajv-errors (自定义错误信息, 不支持对自定义关键字定义错误信息，只能设置原生属性的错误信息)
+import ajvErrors from 'ajv-errors'
 
-const ajv = new Ajv()
+const ajv = new Ajv({ allErrors: true })
+ajvErrors(ajv)
+
 // 自定义校验 format
 ajv.addFormat('test', (data) => {
   console.log('-----------------')
@@ -12,11 +18,30 @@ ajv.addFormat('test', (data) => {
 // 自定义关键字 keywords
 ajv.addKeyword({
   keyword: 'testKeyword',
-  validate: (schema, data) => {
-    console.log('schema', schema)
-    console.log('data', data)
-    return true
+  /* type3 */
+  macro() {
+    return {
+      minLength: 10,
+    }
   },
+
+  /* type2 */
+  // compile: (schema, parentSchema) => {
+  //   console.log(schema)
+  //   console.log(parentSchema)
+  //   return () => true
+  // },
+  // // 关键字值的schema定义
+  // metaSchema: {
+  //   type: 'string'
+  // }
+
+  /* type1 */
+  // validate: (schema, data) => {
+  //   console.log('schema', schema)
+  //   console.log('data', data)
+  //   return false
+  // },
 })
 addFormats(ajv)
 
@@ -48,7 +73,9 @@ const schema = {
     },
     test2: {
       type: 'string',
-      testKeyword: 'there is testKeyword value',
+      // testKeyword: 'there is testKeyword value',
+      errorMessage: '这是错误的！',
+      minLength: 10,
     },
   },
   required: ['name', 'age', 'isWorker'],
@@ -64,5 +91,6 @@ const valid = validate({
   test2: 'gaga',
 })
 if (!valid) {
+  // localize.zh(validate.errors)
   console.log(validate.errors)
 }
