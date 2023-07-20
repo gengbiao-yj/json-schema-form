@@ -14,7 +14,7 @@ export default defineConfig({
       imports: ['vue'],
       // 关闭 eslint 检查
       eslintrc: {
-        enabled: false,
+        enabled: true,
         filepath: './.eslintrc-auto-import.json',
         globalsPropValue: true,
       },
