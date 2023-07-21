@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box !important;
+}
+body {
+  padding: 10px;
+  margin: 0;
+}
+.appContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > div {
+    width: 50%;
+    height: calc(100vh - 20px);
+  }
+  .editorContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    > div {
+      height: 50%;
+    }
+    > div:nth-child(1) {
+      width: 100%;
+      height: calc(50% - 5px);
+      margin-bottom: 5px;
+    }
+    > div:nth-child(2) {
+      width: calc(50% - 5px);
+      height: calc(50% - 5px);
+      margin-top: 5px;
+      margin-right: 5px;
+    }
+    > div:nth-child(3) {
+      width: calc(50% - 5px);
+      height: calc(50% - 5px);
+      margin-top: 5px;
+      margin-left: 5px;
+    }
+  }
+  .formContainer {
+    padding: 10px;
+  }
+}

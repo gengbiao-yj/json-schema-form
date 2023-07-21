@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     vue(),
     eslint(),
-    vueJsx({}),
+    vueJsx(),
     AutoImport({
       imports: ['vue'],
       // 关闭 eslint 检查
