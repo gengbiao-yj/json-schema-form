@@ -42,14 +42,14 @@ export default defineComponent({
 
     // const methodRef = ref<any>()
 
-    // const handleChange = (data: string) => {
-    //   try {
-    //     demo.data = data
-    //     demo.dataCode = toJson(data)
-    //   } catch (e) {
-    //     console.log(e)
-    //   }
-    // }
+    const handleChange = (data: string) => {
+      try {
+        demo.data = data
+        demo.dataCode = toJson(data)
+      } catch (e) {
+        console.log(e)
+      }
+    }
 
     const handleCodeChange = (
       field: 'schema' | 'uiSchema' | 'data',
@@ -88,7 +88,11 @@ export default defineComponent({
             />
           </div>
           <div class={css.formContainer}>
-            <SchemaForm />
+            <SchemaForm
+              schema={demo.schema}
+              onChange={handleChange}
+              value={demo.data}
+            />
           </div>
         </div>
       )
