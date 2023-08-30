@@ -1,4 +1,4 @@
-import MonacoEditor from './components/MonacoEditor.tsx'
+import MonacoEditor from './components/MonacoEditor'
 import css from './style/App.module.scss'
 import demos from './demos'
 import { SchemaForm } from '../lib/index'

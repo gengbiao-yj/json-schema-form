@@ -1,5 +1,7 @@
-import { Schema, SchemaTypes } from './types.ts'
+import { Schema } from './types.ts'
 import type { PropType } from 'vue'
+import SchemaItem from './SchemaItem.tsx'
+
 export default defineComponent({
   name: 'SchemaForm',
   props: {
@@ -9,6 +11,7 @@ export default defineComponent({
     },
     value: {
       required: true,
+      type: Object,
     },
     onChange: {
       type: Function as PropType<(v: any) => void>,
@@ -16,14 +19,14 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const handleChange = (v: any) => {
+      props.onChange(v)
+    }
     return () => {
-      const schema = props.schema
-      const type = schema.type
-      switch (type) {
-        case SchemaTypes.STRING: {
-          return <input type="text" />
-        }
-      }
+      const { schema, value } = props
+      return (
+        <SchemaItem schema={schema} value={value} onChange={handleChange} />
+      )
     }
   },
 })
