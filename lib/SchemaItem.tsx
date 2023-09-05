@@ -1,31 +1,18 @@
-import { Schema, SchemaTypes } from './types.ts'
-import type { PropType } from 'vue'
-import StringField from './fields/StringField'
-import NumberField from './fields/NumberField'
+import { SchemaTypes, FieldPropsDefine } from './types.ts'
+// import StringField from './fields/StringField'
+import StringField from './fields/StringField.vue'
+// import NumberField from './fields/NumberField'
+import NumberField from './fields/NumberField.vue'
 
 export default defineComponent({
   name: 'SchemaItem',
-  props: {
-    schema: {
-      type: Object as PropType<Schema>,
-      required: true,
-    },
-    value: {
-      required: true,
-      type: Object,
-    },
-    onChange: {
-      type: Function as PropType<(v: any) => void>,
-      required: true,
-    },
-  },
+  props: FieldPropsDefine,
   setup(props) {
     return () => {
       const { schema } = props
       // TODO: 如果type没有指定，需要猜测type类型
       const type = schema.type
       let Component: any
-      console.log(type)
 
       switch (type) {
         case SchemaTypes.STRING: {
