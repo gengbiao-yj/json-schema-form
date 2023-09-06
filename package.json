@@ -23,7 +23,10 @@
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^2.1.1",
     "ajv-i18n": "^4.2.0",
+    "json-schema-merge-allof": "^0.8.1",
+    "jsonpointer": "^5.0.1",
     "lint-staged": "^13.2.3",
+    "lodash.union": "^4.6.0",
     "vite-plugin-eslint": "^1.8.1",
     "vue": "^3.3.4"
   },
